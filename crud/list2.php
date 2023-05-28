@@ -1,19 +1,15 @@
 <?php
     include('connection.php');
 
-    if(isset($_POST['submit'])){
-        if($_POST['submit'] == 'Delete'){
-            $id = $_POST['id'];
+    if(isset($_REQUEST['action'])){
+        $id = $_REQUEST['id'];
 
-            $Query = "DELETE FROM students WHERE id = $id";
-            $Result = mysqli_query($Connection,$Query);
-            if($Result){
-                echo "Data Delete Successfully";
-            }else{
-                echo "Something went rong !";
-            }
-            
-
+        $Query = "DELETE FROM students WHERE id = $id";
+        $Result = mysqli_query($Connection,$Query);
+        if($Result){
+            echo "Data Deleted successfully";
+        }else {
+            echo "sone thing went rong !";
         }
     }
     
@@ -53,11 +49,8 @@
                     <td><?php echo $Data['roll']; ?></td>
                     <td><?php echo $Data['number']; ?></td>
                     <td><?php echo $Data['email']; ?></td>
-                    <td><button>Edit</button></td>
-                    <td><form action="list.php" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?php echo $Data['id']; ?>">
-                        <input type="submit" name="submit" value="Delete">
-                    </form></td>
+                    <td><button>Edit</button></td> 
+                    <td><a href="list2.php?action=Delete&id=<?php echo $Data['id'] ?>">Delete</a></td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -66,3 +59,4 @@
     
 </body>
 </html>
+
