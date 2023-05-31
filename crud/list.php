@@ -53,7 +53,7 @@
                     <td><?php echo $Data['roll']; ?></td>
                     <td><?php echo $Data['number']; ?></td>
                     <td><?php echo $Data['email']; ?></td>
-                    <td><button>Edit</button></td>
+                    <td><a href="edit.php?action=edit&id=<?php echo $Data['id']; ?>">Edit</a></td>
                     <td><form action="list.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $Data['id']; ?>">
                         <input type="submit" name="submit" value="Delete">
