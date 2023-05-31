@@ -1,7 +1,5 @@
 <?php
     include('connection.php');
-
-
     if(isset($_REQUEST['action'])){
         if($_REQUEST['action'] == 'edit'){
             $id = $_REQUEST['id'];
@@ -10,42 +8,39 @@
             $Data = mysqli_fetch_assoc($Result);
             // var_dump($Data);
         }
-        if($_REQUEST['action'] == 'Update'){
-            $id = $_REQUEST['id'];
+        // if($_REQUEST['action'] == 'Update'){
+        //     $id = $_REQUEST['id'];
+        //     $name = $_POST['name'];
+        //     $roll = $_POST['roll'];
+        //     $number = $_POST['number'];
+        //     $email = $_POST['email'];      
+            
+        //     echo $Query = "UPDATE students2 SET name = '$name', roll='$roll', number = '$number', email = '$email' WHERE id = $id ";
+        //     $Result = mysqli_query($Connection, $Query);
+        //     if($Result){
+        //         echo "Updated successfully";
+        //     }else{
+        //         echo "Error";
+        //     }
+        // }
+    }
+    if(isset($_POST['submit'])){
+        if($_POST['submit'] == 'Update'){
+            $id = $_POST['id'];
             $name = $_POST['name'];
             $roll = $_POST['roll'];
             $number = $_POST['number'];
-            $email = $_POST['email'];      
-            
-            echo $Query = "UPDATE students2 SET name = '$name', roll='$roll', number = '$number', email = '$email' WHERE id = $id ";
+            $email = $_POST['email'];
+
+            $Query = "UPDATE students2 SET name = '$name', roll='$roll', number = '$number', email = '$email' WHERE id = $id ";
             $Result = mysqli_query($Connection, $Query);
             if($Result){
-                echo "Updated successfully";
+                echo "Updated";
             }else{
                 echo "Error";
             }
         }
-       
     }
-
-
-    // if(isset($_POST['submit'])){
-    //     if($_POST['submit'] == 'Update'){
-    //         $id = $_POST['id'];
-    //         $name = $_POST['name'];
-    //         $roll = $_POST['roll'];
-    //         $number = $_POST['number'];
-    //         $email = $_POST['email'];
-
-    //          echo $Query = "UPDATE students2 SET name = '$name', roll='$roll', number = '$number', email = '$email' WHERE id = '$id '";
-    //         $Result = mysqli_query($Connection, $Query);
-    //         if($Result){
-    //             echo "Updated";
-    //         }else{
-    //             echo "Error";
-    //         }
-    //     }
-    // }
 
 
 ?>
@@ -61,6 +56,7 @@
 <body>
     <div class="mx-auto m-5 p-5 bg-info" style="width: 400px;">
             <form action="edit.php?action=Update&id=<?php echo $Data['id']; ?> " method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?php echo $Data['id']; ?>">
                 <label for="name">Name</label><br>
                 <input type="text" name="name" value="<?php echo $Data['name']; ?>" class="form-control"><br>
 

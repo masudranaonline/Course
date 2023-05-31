@@ -55,6 +55,8 @@
                         <td><?php echo $Data['roll'];?></td>
                         <td><?php echo $Data['number'];?></td>
                         <td><?php echo $Data['email'];?></td>
+                        <!-- <tr><a href="details.php?action=details&id=<?php echo $Data['id']; ?>">view Details</a></tr> -->
+                        <td><a href="details.php?action=details&id=<?php echo $Data['id']; ?>">View Daitels</a></td>
                         <td><a href="edit.php?action=edit&id=<?php echo $Data['id']; ?>">Edit</a></td>
                         <td><form action="view.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $Data['id']; ?>">
