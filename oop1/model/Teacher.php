@@ -41,7 +41,7 @@
             $Query .= " WHERE id = $this->id";
 
             $Db = new Db();
-            $Result = $Db->execute($Query);
+            $Db->execute($Query);
             $Db->close();
         }
 
@@ -51,12 +51,29 @@
             $Query = "DELETE FROM teachers WHERE id = $this->id";
 
             $Db = new Db();
-            $Result = $Db->fetchData($Query);
+            $Data = $Db->fetchData($Query);
             $Db->close();
-            return $Result;
+            return $Data;
         }
 
-        
-     }
+        public function getByPk($id)
+        {
+            $Query = "SELECT * FROM teachers WHERE id = $id";
+            $Db = new Db();
+            $Data = $Db->fetchData($Query);
+            $Db->close();
+            return $Data;
+        }
+
+        public function getAll()
+        {
+            $Query = "SELECT * FROM teacher";
+
+            $Db = new Db();
+            $Data = $Db->fetchData($Query);
+            $Db->close();
+            return $Data;
+        }
+    }
 
 ?>
