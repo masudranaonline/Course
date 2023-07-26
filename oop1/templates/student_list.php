@@ -50,8 +50,8 @@
                     <td><?php echo $Student['subject']; ?></td>
                     <td><?php echo $Student['address']; ?></td>
                     <td><form action="index.php?page=student_edit" method="post">
-                        <input type="hidden" value="<?php echo $Student['id']; ?>">
-                        <button type="submit" name="submit" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                        <input type="hidden" name="id" value="<?php echo $Student['id']; ?>">
+                        <button type="submit" value="Edit" name="submit" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
                     </form></td>
                     <td><form action="controller/student_controller.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $Student['id']; ?>">

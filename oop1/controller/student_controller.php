@@ -31,6 +31,26 @@
            
         }
 
+        if($_POST['submit'] == 'Update'){
+            $Data = [
+                'name'    => $_POST['name'],
+                'roll'    => $_POST['roll'],
+                'number'  => $_POST['number'],
+                'subject' => $_POST['subject'],
+                'address' => $_POST['address'],
+            ];
+            $id = $_POST['id'];
+
+            $Student = new Student();
+            $Result = $Student->edit($Data, $id);
+
+            if($Result){
+                header('Location: ../index.php?page=student_list');
+            }else{
+                header('Location: ../index.php?page=student_list');
+            }
+
+        }
         
     }
 

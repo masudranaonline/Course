@@ -39,8 +39,8 @@
             $this->address = $Data['address'];
             $this->id = $id;
 
-            $Query = "UPDATE students SET name = '$this->name', roll = '$this->roll', number = '$this->number' subject = '$this->subject', address = '$this->address'";
-            $Query .= "WHERE id = $this->id";
+            $Query = "UPDATE students SET name = '$this->name', roll = '$this->roll', number = '$this->number', subject = '$this->subject', address = '$this->address'";
+            $Query .= " WHERE id = $this->id";
 
             $Db = new Db();
             $Db->execute($Query);
@@ -55,6 +55,14 @@
             $Result = $Db->execute($Query);
             $Db->close();
             return $Result;
+        }
+
+        public function getByPk($id){
+            $Query = "SELECT * FROM students WHERE id = $id";
+            $Db = new Db();
+            $Data = $Db->fetchData($Query);
+            $Db->close();
+            return $Data;
         }
 
         public function getAll()
